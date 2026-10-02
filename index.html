@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sultan — Personal Portfolio</title>
+
+<title>Sultan — Space Mission</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --bg:#030712;
-    --bg2:#070d1d;
-    --card:rgba(13,22,43,.65);
-    --border:rgba(130,170,255,.16);
+    --bg:#02040b;
+    --bg2:#060b18;
+    --card:rgba(10,19,40,.68);
+    --border:rgba(120,175,255,.17);
     --text:#f5f7ff;
-    --muted:#aab4cc;
-    --blue:#62a6ff;
-    --cyan:#54e6ff;
-    --purple:#9c7cff;
-    --pink:#e783ff;
-    --shadow:0 20px 60px rgba(0,0,0,.35);
+    --muted:#9caac6;
+    --blue:#63a8ff;
+    --cyan:#58e9ff;
+    --purple:#9b7cff;
+    --pink:#df8cff;
 }
 
 *{
@@ -31,213 +31,311 @@
     scroll-behavior:smooth;
 }
 
+html{
+    overflow-x:hidden;
+}
+
 body{
     font-family:'Inter',sans-serif;
     color:var(--text);
     background:
-        radial-gradient(circle at 20% 20%,rgba(71,101,255,.12),transparent 25%),
-        radial-gradient(circle at 80% 10%,rgba(183,78,255,.11),transparent 25%),
-        linear-gradient(180deg,#02040b,#050a18 45%,#02050c);
+        radial-gradient(circle at 20% 10%,rgba(52,77,180,.13),transparent 28%),
+        radial-gradient(circle at 85% 20%,rgba(145,65,220,.11),transparent 25%),
+        linear-gradient(180deg,#02040b,#050a17 50%,#02040b);
     overflow-x:hidden;
 }
 
-/* =========================
+/* =========================================================
    SPACE BACKGROUND
-========================= */
+========================================================= */
 
 .space{
     position:fixed;
     inset:0;
-    z-index:-10;
+    z-index:-20;
     overflow:hidden;
     pointer-events:none;
 }
 
-.stars,
-.stars::before,
-.stars::after{
-    position:absolute;
-    inset:-100px;
-    content:"";
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.85) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(130,190,255,.7) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1.5px);
-    background-size:90px 90px,140px 140px,210px 210px;
-    background-position:10px 20px,50px 80px,100px 30px;
-}
-
 .stars{
-    animation:starMove 45s linear infinite;
-    opacity:.5;
+    position:absolute;
+    inset:-200px;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(112,190,255,.7) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1.5px);
+    background-size:
+        85px 85px,
+        135px 135px,
+        200px 200px;
+    background-position:
+        15px 20px,
+        50px 90px,
+        100px 30px;
+    animation:starTravel 45s linear infinite;
+    opacity:.58;
 }
 
 .stars::before{
-    animation:starMove 70s linear infinite reverse;
-    opacity:.35;
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(90,200,255,.6) 1px,transparent 1.5px);
+    background-size:115px 115px,240px 240px;
+    animation:starTravel 80s linear infinite reverse;
+    opacity:.4;
 }
 
-.stars::after{
-    animation:starMove 100s linear infinite;
-    opacity:.25;
-}
-
-@keyframes starMove{
-    from{transform:translateY(0)}
-    to{transform:translateY(220px)}
+@keyframes starTravel{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(300px);
+    }
 }
 
 .nebula{
     position:absolute;
-    width:500px;
-    height:500px;
+    width:600px;
+    height:600px;
     border-radius:50%;
-    filter:blur(90px);
-    opacity:.18;
-    animation:nebulaFloat 12s ease-in-out infinite alternate;
+    filter:blur(110px);
+    opacity:.14;
+    animation:nebulaMove 15s ease-in-out infinite alternate;
 }
 
 .nebula.one{
-    background:#4b63ff;
-    top:-150px;
-    left:-150px;
+    background:#3c63ff;
+    left:-250px;
+    top:-220px;
 }
 
 .nebula.two{
-    background:#9a38ff;
-    right:-180px;
+    background:#9b39ff;
+    right:-270px;
     top:25%;
-    animation-delay:2s;
+    animation-delay:3s;
 }
 
 .nebula.three{
-    background:#00c8ff;
-    left:20%;
-    bottom:-250px;
-    animation-delay:4s;
+    background:#00cfff;
+    left:15%;
+    bottom:-400px;
+    animation-delay:6s;
 }
 
-@keyframes nebulaFloat{
-    from{transform:translate(0,0) scale(1)}
-    to{transform:translate(70px,-40px) scale(1.18)}
+@keyframes nebulaMove{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(80px,-50px) scale(1.2);
+    }
 }
+
+/* =========================================================
+   PLANET
+========================================================= */
 
 .planet{
     position:absolute;
     border-radius:50%;
-    opacity:.75;
+    overflow:visible;
 }
 
-.planet.one{
-    width:90px;
-    height:90px;
-    right:8%;
-    top:18%;
+.planet-main{
+    width:250px;
+    height:250px;
+    right:-75px;
+    top:22%;
     background:
-        radial-gradient(circle at 30% 25%,#b8d9ff,#5269bb 40%,#171d4a 75%);
-    box-shadow:0 0 50px rgba(87,125,255,.35);
-    animation:planetFloat 8s ease-in-out infinite;
+        radial-gradient(
+            circle at 31% 27%,
+            rgba(255,255,255,.95) 0 1.5%,
+            transparent 2%
+        ),
+        radial-gradient(
+            circle at 65% 23%,
+            rgba(0,0,0,.35) 0 7%,
+            transparent 8%
+        ),
+        radial-gradient(
+            circle at 42% 68%,
+            rgba(0,0,0,.25) 0 9%,
+            transparent 10%
+        ),
+        radial-gradient(
+            circle at 70% 67%,
+            rgba(255,255,255,.1) 0 6%,
+            transparent 7%
+        ),
+        repeating-radial-gradient(
+            ellipse at 40% 45%,
+            rgba(100,150,255,.28) 0 7px,
+            rgba(40,68,145,.25) 8px 17px,
+            rgba(17,28,75,.7) 18px 29px
+        ),
+        radial-gradient(
+            circle at 35% 28%,
+            #91cfff,
+            #496eb8 38%,
+            #18285f 70%,
+            #050916 100%
+        );
+
+    box-shadow:
+        inset -35px -25px 55px rgba(0,0,0,.75),
+        inset 15px 12px 35px rgba(180,225,255,.28),
+        0 0 50px rgba(78,145,255,.3);
+
+    animation:planetFloat 9s ease-in-out infinite;
 }
 
-.planet.two{
-    width:48px;
-    height:48px;
-    left:7%;
-    top:62%;
-    background:radial-gradient(circle at 30% 25%,#fff,#9a7cff 40%,#2a175b);
-    box-shadow:0 0 35px rgba(155,110,255,.45);
-    animation:planetFloat 10s ease-in-out infinite reverse;
-}
-
-.ring{
+.planet-main::before{
+    content:"";
     position:absolute;
-    width:150px;
-    height:35px;
-    border:2px solid rgba(170,190,255,.35);
+    inset:-12px;
     border-radius:50%;
-    transform:rotate(-18deg);
-    top:44%;
-    right:12%;
-    animation:ringFloat 9s ease-in-out infinite;
+    border:7px solid rgba(107,188,255,.12);
+    filter:blur(2px);
+}
+
+.planet-main::after{
+    content:"";
+    position:absolute;
+    width:360px;
+    height:75px;
+    border:2px solid rgba(132,193,255,.22);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-17deg);
+    box-shadow:0 0 18px rgba(90,175,255,.12);
+}
+
+.planet-small{
+    width:70px;
+    height:70px;
+    left:5%;
+    top:60%;
+    background:
+        radial-gradient(circle at 30% 25%,#e2caff,#7953ae 40%,#1a1035 90%);
+    box-shadow:
+        inset -12px -12px 22px rgba(0,0,0,.65),
+        0 0 35px rgba(148,91,255,.25);
+    animation:planetFloat 11s ease-in-out infinite reverse;
 }
 
 @keyframes planetFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-20px)}
+    0%,100%{
+        transform:translateY(0) rotate(0);
+    }
+    50%{
+        transform:translateY(-18px) rotate(2deg);
+    }
 }
 
-@keyframes ringFloat{
-    0%,100%{transform:rotate(-18deg) translateY(0)}
-    50%{transform:rotate(-12deg) translateY(-15px)}
-}
-
-/* =========================
+/* =========================================================
    SPLASH SCREEN
-========================= */
+========================================================= */
 
 #splash{
     position:fixed;
     inset:0;
-    z-index:9999;
+    z-index:99999;
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
+    overflow:hidden;
     background:
-        radial-gradient(circle at center,rgba(35,51,105,.4),transparent 40%),
-        #02040b;
-    transition:.8s ease;
+        radial-gradient(circle at 50% 45%,rgba(50,76,160,.25),transparent 32%),
+        #01030a;
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#splash.launching{
+    background:
+        radial-gradient(circle at 50% 70%,rgba(68,106,255,.25),transparent 25%),
+        #01030a;
 }
 
 #splash.hide{
     opacity:0;
     visibility:hidden;
-    transform:scale(1.08);
+}
+
+.splash-stars{
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,white 1px,transparent 1.5px),
+        radial-gradient(circle,#72cfff 1px,transparent 1.5px);
+    background-size:100px 100px,170px 170px;
+    opacity:.5;
 }
 
 .splash-content{
+    position:relative;
+    z-index:5;
     width:min(90%,700px);
-    padding:40px 20px;
+    text-align:center;
+    transition:.5s;
+}
+
+.splash-content.launching{
+    opacity:.2;
+    transform:scale(.8);
 }
 
 .splash-logo{
-    width:125px;
-    height:125px;
+    width:120px;
+    height:120px;
     margin:auto;
     border-radius:50%;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
-    border:1px solid rgba(120,180,255,.35);
-    background:rgba(12,24,52,.65);
+    border:1px solid rgba(105,200,255,.4);
+    background:
+        radial-gradient(circle,rgba(58,103,200,.35),rgba(4,10,26,.9));
     box-shadow:
-        0 0 40px rgba(86,140,255,.25),
-        inset 0 0 30px rgba(105,90,255,.1);
+        0 0 45px rgba(72,156,255,.28),
+        inset 0 0 35px rgba(108,88,255,.15);
     animation:logoPulse 3s ease-in-out infinite;
 }
 
 .splash-logo .code{
-    font-family:'Orbitron',sans-serif;
-    font-size:32px;
+    font-family:monospace;
     color:var(--cyan);
+    font-size:31px;
+    font-weight:bold;
 }
 
 .splash-logo small{
-    color:#b8c6e8;
-    font-weight:700;
-    letter-spacing:3px;
     margin-top:5px;
+    color:#b9c8eb;
+    font-weight:800;
+    letter-spacing:4px;
 }
 
 @keyframes logoPulse{
-    0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(86,140,255,.2)}
-    50%{transform:scale(1.05);box-shadow:0 0 70px rgba(86,140,255,.4)}
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.06);
+    }
 }
 
 .splash-content h1{
     font-family:'Orbitron',sans-serif;
-    font-size:clamp(30px,6vw,62px);
+    font-size:clamp(30px,6vw,60px);
     margin-top:30px;
     letter-spacing:2px;
 }
@@ -247,34 +345,143 @@ body{
 }
 
 .splash-content p{
-    max-width:590px;
-    margin:20px auto 30px;
+    max-width:580px;
+    margin:18px auto 28px;
     color:var(--muted);
     line-height:1.8;
-    font-size:15px;
+    font-size:14px;
 }
 
-.start-btn{
-    border:1px solid rgba(110,190,255,.35);
-    background:linear-gradient(135deg,#477cff,#8b62ff);
-    color:white;
-    padding:15px 30px;
-    border-radius:14px;
-    font-weight:800;
-    font-size:15px;
+.launch-btn{
+    border:none;
     cursor:pointer;
-    box-shadow:0 12px 35px rgba(74,101,255,.25);
+    padding:15px 29px;
+    border-radius:14px;
+    color:white;
+    font-weight:800;
+    font-size:14px;
+    background:linear-gradient(135deg,#4b7cff,#8a61ff);
+    box-shadow:0 15px 40px rgba(77,105,255,.3);
     transition:.3s;
 }
 
-.start-btn:hover{
+.launch-btn:hover{
     transform:translateY(-4px);
-    box-shadow:0 18px 45px rgba(74,101,255,.4);
+    box-shadow:0 20px 50px rgba(77,105,255,.45);
 }
 
-/* =========================
+.launch-status{
+    margin-top:20px;
+    min-height:18px;
+    font-family:'Orbitron',sans-serif;
+    font-size:11px;
+    color:#7185ad;
+    letter-spacing:3px;
+}
+
+/* ROCKET */
+
+.rocket{
+    position:absolute;
+    z-index:20;
+    left:50%;
+    bottom:-180px;
+    transform:translateX(-50%);
+    font-size:75px;
+    opacity:0;
+    filter:drop-shadow(0 0 20px rgba(105,190,255,.5));
+}
+
+.rocket.launch{
+    opacity:1;
+    animation:rocketLaunch 2.8s cubic-bezier(.35,.05,.2,1) forwards;
+}
+
+@keyframes rocketLaunch{
+    0%{
+        bottom:-180px;
+        transform:translateX(-50%) rotate(0deg);
+    }
+
+    15%{
+        transform:translateX(-50%) rotate(-2deg);
+    }
+
+    55%{
+        transform:translateX(-50%) rotate(1deg);
+    }
+
+    100%{
+        bottom:120%;
+        transform:translateX(-50%) rotate(0deg);
+    }
+}
+
+/* Rocket flame */
+
+.flame{
+    position:absolute;
+    left:50%;
+    top:78px;
+    transform:translateX(-50%);
+    width:25px;
+    height:80px;
+    background:linear-gradient(to bottom,#fff,#65ddff,#7c55ff,transparent);
+    clip-path:polygon(25% 0,75% 0,100% 100%,50% 75%,0 100%);
+    filter:blur(2px);
+    animation:flame 0.13s infinite alternate;
+}
+
+@keyframes flame{
+    from{
+        height:65px;
+        width:21px;
+    }
+    to{
+        height:95px;
+        width:31px;
+    }
+}
+
+/* Speed lines */
+
+.speed-lines{
+    position:absolute;
+    inset:0;
+    opacity:0;
+}
+
+.speed-lines.active{
+    opacity:1;
+}
+
+.speed-lines span{
+    position:absolute;
+    width:2px;
+    height:80px;
+    background:linear-gradient(transparent,#83dcff,transparent);
+    animation:speed 1s linear infinite;
+}
+
+.speed-lines span:nth-child(1){left:15%;animation-delay:.1s}
+.speed-lines span:nth-child(2){left:28%;animation-delay:.3s}
+.speed-lines span:nth-child(3){left:43%;animation-delay:.5s}
+.speed-lines span:nth-child(4){left:60%;animation-delay:.2s}
+.speed-lines span:nth-child(5){left:75%;animation-delay:.6s}
+.speed-lines span:nth-child(6){left:88%;animation-delay:.4s}
+
+@keyframes speed{
+    from{
+        transform:translateY(-150px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 nav{
     position:fixed;
@@ -282,19 +489,19 @@ nav{
     left:0;
     right:0;
     z-index:1000;
-    padding:18px 6%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(3,7,18,.55);
+    padding:18px 6%;
+    background:rgba(2,6,16,.55);
     backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(130,170,255,.08);
+    border-bottom:1px solid rgba(120,170,255,.08);
 }
 
 .logo{
     font-family:'Orbitron',sans-serif;
-    font-weight:800;
     font-size:20px;
+    font-weight:900;
 }
 
 .logo span{
@@ -303,14 +510,14 @@ nav{
 
 .nav-links{
     display:flex;
-    gap:28px;
+    gap:25px;
     list-style:none;
 }
 
 .nav-links a{
-    color:#aeb8d0;
+    color:#aebbd5;
     text-decoration:none;
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
     transition:.25s;
 }
@@ -321,13 +528,13 @@ nav{
 
 .menu{
     display:none;
-    font-size:25px;
     cursor:pointer;
+    font-size:24px;
 }
 
-/* =========================
+/* =========================================================
    GENERAL
-========================= */
+========================================================= */
 
 section{
     width:min(1120px,90%);
@@ -339,42 +546,54 @@ section{
     margin-bottom:45px;
 }
 
-.section-title .mini{
+.mini{
     color:var(--cyan);
-    font-size:12px;
-    font-weight:800;
+    font-family:'Orbitron',sans-serif;
+    font-size:10px;
     letter-spacing:3px;
-    text-transform:uppercase;
+    font-weight:700;
 }
 
 .section-title h2{
+    margin-top:11px;
     font-family:'Orbitron',sans-serif;
     font-size:clamp(27px,4vw,40px);
-    margin-top:10px;
 }
 
 .section-title p{
     color:var(--muted);
-    max-width:650px;
     line-height:1.8;
+    max-width:650px;
     margin-top:14px;
 }
 
-/* =========================
+.glass{
+    border:1px solid var(--border);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,29,58,.67),
+            rgba(5,11,25,.62)
+        );
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
-    padding-top:130px;
+    padding-top:135px;
 }
 
 .hero-grid{
     width:100%;
     display:grid;
-    grid-template-columns:1.3fr .7fr;
+    grid-template-columns:1.2fr .8fr;
     gap:70px;
     align-items:center;
 }
@@ -384,174 +603,263 @@ section{
     align-items:center;
     gap:9px;
     padding:9px 14px;
-    border:1px solid rgba(100,190,255,.2);
-    border-radius:100px;
-    background:rgba(25,43,78,.4);
-    color:#c9d8f5;
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:25px;
+    border:1px solid rgba(91,190,255,.2);
+    background:rgba(24,43,78,.4);
+    border-radius:50px;
+    color:#c8d6f0;
+    font-size:10px;
+    letter-spacing:1.5px;
+    font-weight:800;
 }
 
 .badge i{
     width:7px;
     height:7px;
-    background:#6effcf;
     border-radius:50%;
-    box-shadow:0 0 12px #6effcf;
+    background:#6dffce;
+    box-shadow:0 0 12px #6dffce;
 }
 
 .hero h1{
+    margin-top:22px;
     font-family:'Orbitron',sans-serif;
-    font-size:clamp(42px,7vw,78px);
-    line-height:1.05;
+    font-size:clamp(42px,7vw,77px);
+    line-height:1.04;
     letter-spacing:-2px;
 }
 
 .hero h1 span{
-    background:linear-gradient(90deg,#6bdfff,#8f78ff,#d184ff);
+    background:linear-gradient(90deg,#62e0ff,#8d7bff,#d383ff);
     -webkit-background-clip:text;
     color:transparent;
 }
 
+.typing{
+    margin-top:18px;
+    min-height:27px;
+    color:#b9c9e8;
+    font-family:'Orbitron',sans-serif;
+    font-size:14px;
+}
+
+.cursor{
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
 .hero-text{
-    max-width:680px;
     color:var(--muted);
     line-height:1.9;
-    font-size:16px;
-    margin:25px 0 32px;
+    font-size:15px;
+    max-width:680px;
+    margin:23px 0 30px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:14px;
     flex-wrap:wrap;
+    gap:12px;
 }
 
 .btn{
+    display:inline-block;
     text-decoration:none;
-    padding:14px 21px;
+    padding:14px 20px;
     border-radius:13px;
-    font-size:14px;
+    font-size:13px;
     font-weight:800;
     transition:.3s;
 }
 
 .btn-primary{
     color:white;
-    background:linear-gradient(135deg,#477cff,#8c5fff);
-    box-shadow:0 12px 35px rgba(75,92,255,.22);
+    background:linear-gradient(135deg,#4d7cff,#8c60ff);
+    box-shadow:0 12px 35px rgba(75,100,255,.22);
 }
 
 .btn-secondary{
-    color:#dbe5ff;
+    color:#d9e4fb;
     border:1px solid var(--border);
-    background:rgba(20,30,53,.45);
+    background:rgba(15,28,53,.5);
 }
 
 .btn:hover{
     transform:translateY(-4px);
 }
 
-/* PROFILE LOGO */
+/* =========================================================
+   HERO PROFILE
+========================================================= */
 
-.profile-wrap{
+.profile-area{
     position:relative;
+    min-height:440px;
     display:flex;
     justify-content:center;
+    align-items:center;
+}
+
+.orbit-main{
+    position:absolute;
+    width:360px;
+    height:170px;
+    border:1px solid rgba(102,192,255,.2);
+    border-radius:50%;
+    transform:rotate(-18deg);
+    animation:orbitRotate 12s linear infinite;
+}
+
+.orbit-main::after{
+    content:"";
+    position:absolute;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--cyan);
+    top:-6px;
+    left:50%;
+    box-shadow:0 0 20px var(--cyan);
+}
+
+@keyframes orbitRotate{
+    from{
+        transform:rotate(-18deg);
+    }
+    to{
+        transform:rotate(342deg);
+    }
 }
 
 .profile-card{
-    width:290px;
-    height:350px;
-    border:1px solid rgba(130,175,255,.18);
+    position:relative;
+    z-index:3;
+    width:285px;
+    min-height:350px;
     border-radius:30px;
-    background:linear-gradient(145deg,rgba(22,37,70,.7),rgba(8,13,28,.55));
-    backdrop-filter:blur(20px);
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
-    box-shadow:var(--shadow);
+    padding:30px;
     transform:rotate(2deg);
-    animation:cardFloat 5s ease-in-out infinite;
+    animation:profileFloat 5s ease-in-out infinite;
 }
 
-@keyframes cardFloat{
-    0%,100%{transform:rotate(2deg) translateY(0)}
-    50%{transform:rotate(2deg) translateY(-12px)}
+@keyframes profileFloat{
+    0%,100%{
+        transform:rotate(2deg) translateY(0);
+    }
+    50%{
+        transform:rotate(2deg) translateY(-12px);
+    }
 }
 
-.profile-icon{
-    width:170px;
-    height:170px;
+.rpl-logo{
+    width:175px;
+    height:175px;
     border-radius:50%;
-    border:2px solid rgba(93,204,255,.35);
-    background:
-        radial-gradient(circle,rgba(61,115,255,.3),rgba(8,16,39,.9));
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
+    background:
+        radial-gradient(circle at 35% 30%,rgba(93,211,255,.35),transparent 35%),
+        radial-gradient(circle,rgba(35,71,140,.75),rgba(5,12,29,.95));
+    border:2px solid rgba(98,206,255,.32);
     box-shadow:
-        0 0 35px rgba(78,154,255,.22),
-        inset 0 0 35px rgba(92,89,255,.13);
+        0 0 45px rgba(75,160,255,.25),
+        inset 0 0 35px rgba(108,87,255,.15);
 }
 
-.profile-icon .symbols{
+.rpl-logo .symbol{
     font-family:monospace;
     color:var(--cyan);
-    font-size:33px;
+    font-size:35px;
     font-weight:bold;
 }
 
-.profile-icon strong{
+.rpl-logo strong{
+    margin-top:5px;
     font-family:'Orbitron',sans-serif;
     font-size:28px;
-    margin-top:6px;
 }
 
 .profile-card h3{
+    margin-top:22px;
     font-family:'Orbitron',sans-serif;
-    margin-top:23px;
+    font-size:17px;
 }
 
 .profile-card p{
-    color:#8e9cba;
-    font-size:12px;
     margin-top:8px;
+    color:#8292b2;
+    font-size:11px;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* =========================================================
+   STATUS PANEL
+========================================================= */
 
-.glass{
-    border:1px solid var(--border);
-    background:linear-gradient(145deg,rgba(15,27,53,.62),rgba(7,13,28,.55));
-    backdrop-filter:blur(18px);
-    border-radius:24px;
-    box-shadow:var(--shadow);
+.status-panel{
+    position:absolute;
+    z-index:4;
+    right:-15px;
+    bottom:10px;
+    width:185px;
+    padding:16px;
+    border-radius:16px;
 }
 
-/* =========================
+.status-title{
+    color:#657594;
+    font-size:9px;
+    letter-spacing:2px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.status-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin:9px 0;
+    font-size:9px;
+}
+
+.status-row span:first-child{
+    color:#72819f;
+}
+
+.status-row span:last-child{
+    color:#d5e1f8;
+}
+
+.online{
+    color:#65ffd0!important;
+}
+
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:25px;
+    gap:22px;
 }
 
 .about-card{
     padding:30px;
+    border-radius:24px;
 }
 
 .about-card h3{
     font-family:'Orbitron',sans-serif;
-    font-size:20px;
-    margin-bottom:17px;
+    font-size:19px;
+    margin-bottom:16px;
 }
 
 .about-card p{
@@ -561,18 +869,18 @@ section{
 }
 
 .quote{
-    margin-top:25px;
-    padding:18px;
+    margin-top:22px;
+    padding:17px;
     border-left:3px solid var(--cyan);
-    background:rgba(70,130,255,.05);
-    color:#cbd7ef;
+    background:rgba(78,150,255,.05);
+    color:#c7d5ed;
     line-height:1.7;
-    font-size:13px;
+    font-size:12px;
 }
 
-/* =========================
-   PERSONAL INFO
-========================= */
+/* =========================================================
+   INFORMATION
+========================================================= */
 
 .info-grid{
     display:grid;
@@ -581,37 +889,45 @@ section{
 }
 
 .info-item{
-    padding:22px;
+    padding:21px;
+    border-radius:19px;
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:15px;
+    transition:.3s;
+}
+
+.info-item:hover{
+    transform:translateY(-4px);
+    border-color:rgba(100,190,255,.32);
 }
 
 .info-icon{
-    width:45px;
-    height:45px;
-    border-radius:13px;
+    width:44px;
+    height:44px;
+    flex-shrink:0;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:rgba(74,135,255,.12);
-    font-size:20px;
+    border-radius:12px;
+    background:rgba(75,140,255,.11);
+    font-size:19px;
 }
 
 .info-item small{
-    color:#71809f;
     display:block;
+    color:#667595;
+    font-size:10px;
     margin-bottom:5px;
-    font-size:11px;
 }
 
 .info-item strong{
-    font-size:14px;
+    font-size:13px;
 }
 
-/* =========================
+/* =========================================================
    EDUCATION
-========================= */
+========================================================= */
 
 .timeline{
     position:relative;
@@ -626,13 +942,13 @@ section{
     top:0;
     bottom:0;
     width:1px;
-    background:linear-gradient(var(--cyan),transparent);
+    background:linear-gradient(var(--cyan),rgba(100,150,255,.05));
 }
 
 .timeline-item{
     position:relative;
-    padding-left:65px;
-    margin-bottom:35px;
+    padding-left:62px;
+    margin-bottom:30px;
 }
 
 .timeline-dot{
@@ -642,63 +958,65 @@ section{
     width:21px;
     height:21px;
     border-radius:50%;
-    background:#101b36;
+    background:#09142d;
     border:2px solid var(--cyan);
-    box-shadow:0 0 18px rgba(84,230,255,.45);
+    box-shadow:0 0 18px rgba(84,230,255,.4);
 }
 
 .timeline-card{
     padding:25px;
+    border-radius:22px;
 }
 
-.timeline-card .year{
+.year{
     color:var(--cyan);
-    font-size:12px;
+    font-size:10px;
     font-weight:800;
-    letter-spacing:1px;
+    letter-spacing:2px;
 }
 
 .timeline-card h3{
-    margin:8px 0;
+    margin:9px 0;
     font-family:'Orbitron',sans-serif;
-    font-size:18px;
+    font-size:17px;
 }
 
 .timeline-card p{
     color:var(--muted);
-    font-size:14px;
+    font-size:13px;
     line-height:1.8;
 }
 
-/* =========================
+/* =========================================================
    INTEREST
-========================= */
+========================================================= */
 
 .interest-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:18px;
 }
 
 .interest-card{
-    padding:28px;
     min-height:220px;
+    padding:28px;
+    border-radius:23px;
     transition:.35s;
 }
 
 .interest-card:hover{
     transform:translateY(-8px);
-    border-color:rgba(105,194,255,.35);
+    border-color:rgba(100,190,255,.3);
 }
 
-.interest-card .emoji{
-    font-size:32px;
+.emoji{
+    font-size:31px;
 }
 
 .interest-card h3{
-    margin:20px 0 10px;
+    margin:18px 0 10px;
     font-family:'Orbitron',sans-serif;
-    font-size:17px;
+    font-size:16px;
 }
 
 .interest-card p{
@@ -707,158 +1025,169 @@ section{
     line-height:1.8;
 }
 
-/* =========================
+/* =========================================================
    GOAL
-========================= */
+========================================================= */
 
 .goal{
     padding:40px;
-    position:relative;
+    border-radius:26px;
     overflow:hidden;
+    position:relative;
 }
 
 .goal::after{
     content:"✦";
     position:absolute;
-    right:50px;
-    top:30px;
-    font-size:100px;
-    color:rgba(120,160,255,.06);
+    right:40px;
+    top:15px;
+    font-size:120px;
+    color:rgba(110,165,255,.05);
 }
 
 .goal h3{
+    position:relative;
+    z-index:2;
     font-family:'Orbitron',sans-serif;
-    font-size:27px;
-    max-width:700px;
+    font-size:25px;
+    max-width:760px;
+    line-height:1.5;
 }
 
 .goal p{
+    position:relative;
+    z-index:2;
+    max-width:820px;
     color:var(--muted);
     line-height:1.9;
+    font-size:14px;
     margin-top:18px;
-    max-width:800px;
 }
 
 .goal-list{
-    margin-top:25px;
+    position:relative;
+    z-index:2;
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:9px;
+    margin-top:25px;
 }
 
 .goal-list span{
     padding:9px 14px;
     border-radius:50px;
-    background:rgba(88,134,255,.09);
-    border:1px solid rgba(100,160,255,.14);
-    color:#c7d7f5;
-    font-size:12px;
+    border:1px solid rgba(100,160,255,.15);
+    background:rgba(76,126,255,.07);
+    color:#c8d7f2;
+    font-size:11px;
 }
 
-/* =========================
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .contact-card{
-    padding:40px;
     display:grid;
     grid-template-columns:1fr .8fr;
     gap:40px;
     align-items:center;
+    padding:40px;
+    border-radius:27px;
 }
 
 .contact-card h3{
     font-family:'Orbitron',sans-serif;
-    font-size:28px;
+    font-size:26px;
 }
 
 .contact-card p{
     color:var(--muted);
-    line-height:1.8;
-    margin:15px 0 25px;
+    line-height:1.9;
     font-size:14px;
+    margin:15px 0 25px;
 }
 
 .socials{
     display:flex;
-    gap:12px;
     flex-wrap:wrap;
+    gap:10px;
 }
 
 .social{
     text-decoration:none;
-    color:#dce7ff;
+    color:#dce6fa;
     border:1px solid var(--border);
-    background:rgba(20,30,53,.5);
-    padding:13px 17px;
+    background:rgba(20,32,58,.5);
+    padding:12px 16px;
     border-radius:12px;
-    font-size:13px;
+    font-size:12px;
     font-weight:700;
     transition:.3s;
 }
 
 .social:hover{
     transform:translateY(-3px);
-    border-color:rgba(100,190,255,.4);
+    border-color:rgba(100,190,255,.35);
 }
 
 .contact-orbit{
     height:220px;
-    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
+    position:relative;
 }
 
-.orbit{
-    position:absolute;
-    width:180px;
-    height:180px;
-    border:1px solid rgba(105,173,255,.25);
+.contact-orbit .circle{
+    width:170px;
+    height:170px;
     border-radius:50%;
-    animation:orbit 10s linear infinite;
+    border:1px solid rgba(100,180,255,.22);
+    position:absolute;
+    animation:contactOrbit 10s linear infinite;
 }
 
-.orbit::after{
+.contact-orbit .circle::after{
     content:"";
-    position:absolute;
     width:12px;
     height:12px;
-    background:var(--cyan);
-    border-radius:50%;
-    top:-6px;
+    position:absolute;
     left:50%;
-    box-shadow:0 0 20px var(--cyan);
+    top:-6px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 18px var(--cyan);
 }
 
-@keyframes orbit{
-    from{transform:rotate(0)}
-    to{transform:rotate(360deg)}
+@keyframes contactOrbit{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-.orbit-center{
+.contact-center{
     font-size:45px;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
     text-align:center;
-    padding:50px 20px;
-    color:#687594;
-    border-top:1px solid rgba(130,170,255,.07);
-    font-size:12px;
+    padding:55px 20px;
+    border-top:1px solid rgba(120,170,255,.07);
+    color:#65738e;
+    font-size:11px;
 }
 
 footer strong{
-    color:#9eb0d2;
+    color:#a8b8d7;
 }
 
-/* =========================
+/* =========================================================
    REVEAL
-========================= */
+========================================================= */
 
 .reveal{
     opacity:0;
@@ -871,33 +1200,33 @@ footer strong{
     transform:translateY(0);
 }
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
     .nav-links{
         position:absolute;
         top:70px;
         right:6%;
-        width:220px;
+        width:230px;
         padding:20px;
         flex-direction:column;
         gap:18px;
         border-radius:18px;
-        background:rgba(5,11,25,.95);
+        background:rgba(4,9,21,.96);
         border:1px solid var(--border);
-        transform:translateY(-15px);
         opacity:0;
         pointer-events:none;
+        transform:translateY(-10px);
         transition:.3s;
     }
 
     .nav-links.active{
-        transform:translateY(0);
         opacity:1;
         pointer-events:auto;
+        transform:translateY(0);
     }
 
     .menu{
@@ -918,7 +1247,7 @@ footer strong{
         justify-content:center;
     }
 
-    .profile-wrap{
+    .profile-area{
         margin-top:20px;
     }
 
@@ -931,35 +1260,57 @@ footer strong{
         grid-template-columns:1fr;
     }
 
-    .info-grid{
-        grid-template-columns:1fr;
+    .planet-main{
+        opacity:.3;
+        right:-140px;
     }
 }
 
-@media(max-width:500px){
+@media(max-width:600px){
 
     section{
         padding:85px 0;
     }
 
     .hero h1{
-        font-size:39px;
+        font-size:40px;
+    }
+
+    .hero-text{
+        font-size:14px;
     }
 
     .profile-card{
-        width:250px;
-        height:320px;
+        width:260px;
     }
 
-    .profile-icon{
-        width:145px;
-        height:145px;
+    .status-panel{
+        right:-5px;
+        bottom:-10px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
     }
 
     .goal,
-    .contact-card,
-    .about-card{
+    .contact-card{
         padding:25px;
+    }
+
+    .splash-content h1{
+        font-size:30px;
+    }
+
+    .splash-content p{
+        font-size:13px;
+    }
+
+    .planet-main{
+        width:170px;
+        height:170px;
+        top:10%;
+        right:-90px;
     }
 }
 </style>
@@ -967,54 +1318,82 @@ footer strong{
 
 <body>
 
-<!-- =========================
-     SPLASH SCREEN
-========================= -->
+<!-- =========================================================
+     SPLASH / LAUNCH SCREEN
+========================================================= -->
 
 <div id="splash">
-    <div class="splash-content">
+
+    <div class="splash-stars"></div>
+
+    <div class="speed-lines" id="speedLines">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="splash-content" id="splashContent">
 
         <div class="splash-logo">
             <div class="code">&lt;/&gt;</div>
             <small>RPL</small>
         </div>
 
-        <h1>Welcome to <span>My Space</span></h1>
+        <h1>
+            Welcome to
+            <span>My Space</span>
+        </h1>
 
         <p>
-            Setiap perjalanan dimulai dari satu langkah kecil.
-            Di sini, kamu bisa mengenal lebih dekat tentang saya,
-            perjalanan pendidikan saya, hal-hal yang saya sukai,
-            serta tujuan yang ingin saya capai di masa depan.
+            Sebuah ruang digital kecil untuk mengenal saya lebih dekat,
+            melihat perjalanan pendidikan saya, mengetahui hal-hal yang
+            saya sukai, dan melihat tujuan yang ingin saya capai.
+            Semua perjalanan besar selalu dimulai dari satu langkah kecil.
         </p>
 
-        <button class="start-btn" onclick="enterSpace()">
+        <button class="launch-btn" onclick="launchMission()">
             ✨ Mulai Eksplorasi
         </button>
 
+        <div class="launch-status" id="launchStatus">
+            SYSTEM READY
+        </div>
+
     </div>
+
+    <!-- ROCKET -->
+    <div class="rocket" id="rocket">
+        🚀
+        <div class="flame"></div>
+    </div>
+
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      SPACE BACKGROUND
-========================= -->
+========================================================= -->
 
 <div class="space">
+
     <div class="stars"></div>
+
     <div class="nebula one"></div>
     <div class="nebula two"></div>
     <div class="nebula three"></div>
 
-    <div class="planet one"></div>
-    <div class="planet two"></div>
-    <div class="ring"></div>
+    <div class="planet planet-main"></div>
+    <div class="planet planet-small"></div>
+
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      NAVBAR
-========================= -->
+========================================================= -->
 
 <nav>
 
@@ -1023,6 +1402,7 @@ footer strong{
     </div>
 
     <ul class="nav-links" id="navLinks">
+
         <li><a href="#home">Home</a></li>
         <li><a href="#about">Tentang</a></li>
         <li><a href="#info">Informasi</a></li>
@@ -1030,6 +1410,7 @@ footer strong{
         <li><a href="#interest">Minat</a></li>
         <li><a href="#goal">Tujuan</a></li>
         <li><a href="#contact">Kontak</a></li>
+
     </ul>
 
     <div class="menu" onclick="toggleMenu()">☰</div>
@@ -1037,9 +1418,9 @@ footer strong{
 </nav>
 
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero" id="home">
 
@@ -1049,7 +1430,7 @@ footer strong{
 
             <div class="badge">
                 <i></i>
-                PERSONAL SPACE • X RPL 1
+                TRANSMISSION RECEIVED • X RPL 1
             </div>
 
             <h1>
@@ -1057,46 +1438,87 @@ footer strong{
                 <span>Sultan.</span>
             </h1>
 
+            <div class="typing">
+                <span id="typingText"></span>
+                <span class="cursor">|</span>
+            </div>
+
             <p class="hero-text">
-                Selamat datang di ruang kecil saya di dunia digital.
-                Saya adalah seorang siswa yang sedang menjalani perjalanan
-                di SMK Negeri 4 Palembang dan mulai mengenal lebih jauh
-                dunia teknologi, pemrograman, serta berbagai hal kreatif
-                yang bisa dibuat dengan komputer.
+                Selamat datang di personal space saya.
+                Saya adalah seorang siswa SMK Negeri 4 Palembang
+                yang sedang memulai perjalanan untuk mengenal lebih
+                jauh dunia teknologi, pemrograman, kreativitas,
+                dan berbagai hal menarik di dunia digital.
                 <br><br>
-                Bagi saya, belajar bukan hanya tentang mendapatkan nilai,
-                tetapi juga tentang mencoba sesuatu yang baru, melakukan
-                kesalahan, memperbaikinya, dan terus berkembang sedikit
-                demi sedikit.
+                Website ini bukan hanya sekadar halaman biodata.
+                Anggap saja ini seperti sebuah catatan perjalanan:
+                dari mana saya berasal, apa yang sedang saya pelajari,
+                apa yang membuat saya tertarik, sampai ke tujuan yang
+                ingin saya capai di masa depan.
             </p>
 
             <div class="hero-buttons">
+
                 <a href="#about" class="btn btn-primary">
                     Kenali Saya →
                 </a>
 
-                <a href="#contact" class="btn btn-secondary">
-                    Hubungi Saya
+                <a href="#education" class="btn btn-secondary">
+                    Lihat Perjalanan
                 </a>
+
             </div>
 
         </div>
 
 
-        <div class="profile-wrap reveal">
+        <!-- PROFILE -->
 
-            <div class="profile-card">
+        <div class="profile-area reveal">
 
-                <div class="profile-icon">
-                    <div class="symbols">&lt;/&gt;</div>
+            <div class="orbit-main"></div>
+
+            <div class="glass profile-card">
+
+                <div class="rpl-logo">
+
+                    <div class="symbol">
+                        &lt;/&gt;
+                    </div>
+
                     <strong>RPL</strong>
+
                 </div>
 
-                <h3>CODING SPACE</h3>
+                <h3>DIGITAL EXPLORER</h3>
 
                 <p>
                     Learn • Create • Explore
                 </p>
+
+            </div>
+
+
+            <div class="glass status-panel">
+
+                <div class="status-title">
+                    MISSION STATUS
+                </div>
+
+                <div class="status-row">
+                    <span>System</span>
+                    <span class="online">● ONLINE</span>
+                </div>
+
+                <div class="status-row">
+                    <span>Location</span>
+                    <span>PALEMBANG</span>
+                </div>
+
+                <div class="status-row">
+                    <span>Mission</span>
+                    <span>LEARNING</span>
+                </div>
 
             </div>
 
@@ -1107,20 +1529,24 @@ footer strong{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      ABOUT
-========================= -->
+========================================================= -->
 
 <section id="about">
 
     <div class="section-title reveal">
-        <div class="mini">01 — About Me</div>
+
+        <div class="mini">
+            01 — ABOUT ME
+        </div>
 
         <h2>Tentang Saya</h2>
 
         <p>
-            Sedikit cerita mengenai diri saya dan perjalanan yang sedang saya jalani.
+            Mengenal orang di balik layar dan perjalanan yang sedang ia jalani.
         </p>
+
     </div>
 
 
@@ -1131,21 +1557,23 @@ footer strong{
             <h3>Siapa Saya?</h3>
 
             <p>
-                Nama saya <strong>M. Sultan Abdillah</strong>, dan biasanya
-                saya dipanggil Sultan. Saat ini saya sedang menempuh pendidikan
-                di SMK Negeri 4 Palembang, kelas X RPL 1.
+                Nama saya <strong>M. Sultan Abdillah</strong>, dan saya
+                biasa dipanggil Sultan. Saat ini saya merupakan siswa
+                kelas X RPL 1 di SMK Negeri 4 Palembang.
             </p>
 
             <p style="margin-top:15px;">
-                Saya tertarik dengan dunia teknologi karena menurut saya
-                komputer bukan hanya alat untuk digunakan, tetapi juga bisa
-                menjadi tempat untuk membuat sesuatu dari ide yang awalnya
-                hanya ada di pikiran.
+                Saya memiliki ketertarikan terhadap teknologi karena
+                dunia digital memberikan banyak ruang untuk berkreasi.
+                Sesuatu yang awalnya hanya berupa ide dapat dikembangkan
+                menjadi sebuah tampilan, aplikasi, sistem, atau bahkan
+                sebuah karya yang dapat digunakan orang lain.
             </p>
 
             <div class="quote">
-                “Tidak harus langsung hebat. Yang penting terus bergerak,
-                terus belajar, dan tidak berhenti mencoba.”
+                Setiap orang memiliki perjalanan masing-masing.
+                Saya memilih untuk terus belajar dan melihat sejauh
+                mana perjalanan ini bisa membawa saya.
             </div>
 
         </div>
@@ -1153,19 +1581,21 @@ footer strong{
 
         <div class="glass about-card reveal">
 
-            <h3>Perjalanan Saya</h3>
+            <h3>Kenapa Saya Tertarik?</h3>
 
             <p>
-                Memasuki dunia SMK menjadi salah satu langkah baru bagi saya.
-                Di sini saya mulai bertemu dengan berbagai pelajaran,
-                lingkungan, teman, dan pengalaman yang berbeda dari sebelumnya.
+                Salah satu hal yang membuat saya tertarik dengan dunia
+                pemrograman adalah prosesnya. Kita bisa memulai dari
+                sesuatu yang sederhana, mencoba, menemukan kesalahan,
+                memperbaikinya, kemudian melihat hasilnya menjadi sesuatu
+                yang benar-benar bisa digunakan.
             </p>
 
             <p style="margin-top:15px;">
-                Saya ingin memanfaatkan masa sekolah ini untuk memperbanyak
-                pengalaman, memahami teknologi dengan lebih baik, dan
-                menemukan kemampuan yang nantinya dapat saya kembangkan
-                untuk masa depan.
+                Saya masih berada di awal perjalanan. Karena itu,
+                saya ingin memanfaatkan waktu di sekolah untuk mencoba
+                sebanyak mungkin hal baru dan menemukan bidang yang
+                benar-benar ingin saya tekuni.
             </p>
 
         </div>
@@ -1175,20 +1605,22 @@ footer strong{
 </section>
 
 
-<!-- =========================
-     PERSONAL INFO
-========================= -->
+<!-- =========================================================
+     PERSONAL INFORMATION
+========================================================= -->
 
 <section id="info">
 
     <div class="section-title reveal">
 
-        <div class="mini">02 — Personal Data</div>
+        <div class="mini">
+            02 — PERSONAL DATA
+        </div>
 
         <h2>Informasi Diri</h2>
 
         <p>
-            Beberapa informasi singkat yang menggambarkan saya saat ini.
+            Beberapa informasi singkat mengenai identitas dan keadaan saya saat ini.
         </p>
 
     </div>
@@ -1197,51 +1629,74 @@ footer strong{
     <div class="info-grid">
 
         <div class="glass info-item reveal">
+
             <div class="info-icon">👤</div>
+
             <div>
                 <small>Nama</small>
                 <strong>M. Sultan Abdillah</strong>
             </div>
+
         </div>
 
+
         <div class="glass info-item reveal">
+
             <div class="info-icon">✨</div>
+
             <div>
-                <small>Panggilan</small>
+                <small>Nama Panggilan</small>
                 <strong>Sultan</strong>
             </div>
+
         </div>
 
+
         <div class="glass info-item reveal">
+
             <div class="info-icon">🏫</div>
+
             <div>
                 <small>Sekolah</small>
                 <strong>SMK Negeri 4 Palembang</strong>
             </div>
+
         </div>
 
+
         <div class="glass info-item reveal">
+
             <div class="info-icon">💻</div>
+
             <div>
                 <small>Kelas</small>
                 <strong>X RPL 1</strong>
             </div>
+
         </div>
 
+
         <div class="glass info-item reveal">
+
             <div class="info-icon">📍</div>
+
             <div>
                 <small>Kota</small>
                 <strong>Palembang, Sumatera Selatan</strong>
             </div>
+
         </div>
 
+
         <div class="glass info-item reveal">
+
             <div class="info-icon">🌌</div>
+
             <div>
-                <small>Ketertarikan</small>
+                <small>Fokus Ketertarikan</small>
                 <strong>Teknologi & Dunia Digital</strong>
             </div>
+
         </div>
 
     </div>
@@ -1249,21 +1704,23 @@ footer strong{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      EDUCATION
-========================= -->
+========================================================= -->
 
 <section id="education">
 
     <div class="section-title reveal">
 
-        <div class="mini">03 — My Journey</div>
+        <div class="mini">
+            03 — MISSION LOG
+        </div>
 
         <h2>Pendidikan & Perjalanan</h2>
 
         <p>
-            Perjalanan pendidikan yang membawa saya sampai ke dunia SMK
-            dan menjadi awal dari perjalanan baru dalam mengenal teknologi.
+            Setiap tahap pendidikan menjadi bagian dari perjalanan
+            yang membawa saya menuju pengalaman baru.
         </p>
 
     </div>
@@ -1277,14 +1734,17 @@ footer strong{
 
             <div class="glass timeline-card">
 
-                <div class="year">MASA SMP</div>
+                <div class="year">
+                    PREVIOUS MISSION
+                </div>
 
                 <h3>SMPN 6 Palembang</h3>
 
                 <p>
-                    Menjalani masa pendidikan SMP sekaligus mendapatkan
-                    berbagai pengalaman dasar dalam belajar, berorganisasi,
-                    berteman, dan mengenal berbagai bidang yang menarik.
+                    Masa SMP menjadi salah satu tahap penting sebelum
+                    memasuki dunia SMK. Di sana saya mendapatkan berbagai
+                    pengalaman dalam belajar, berteman, mengikuti kegiatan,
+                    dan mulai mengenal berbagai hal yang menarik bagi saya.
                 </p>
 
             </div>
@@ -1298,15 +1758,18 @@ footer strong{
 
             <div class="glass timeline-card">
 
-                <div class="year">LANGKAH BARU</div>
+                <div class="year">
+                    NEW DESTINATION
+                </div>
 
                 <h3>SMK Negeri 4 Palembang</h3>
 
                 <p>
-                    Memasuki SMK menjadi awal perjalanan yang lebih dekat
-                    dengan dunia kejuruan. Saya mulai mengenal lingkungan
-                    pembelajaran yang lebih berfokus pada keterampilan,
-                    teknologi, dan praktik.
+                    Setelah menyelesaikan masa SMP, saya melanjutkan
+                    perjalanan pendidikan ke SMK Negeri 4 Palembang.
+                    Lingkungan baru ini menjadi kesempatan untuk belajar
+                    lebih banyak mengenai dunia kejuruan dan keterampilan
+                    yang dapat digunakan untuk masa depan.
                 </p>
 
             </div>
@@ -1320,15 +1783,17 @@ footer strong{
 
             <div class="glass timeline-card">
 
-                <div class="year">SAAT INI</div>
+                <div class="year">
+                    CURRENT MISSION
+                </div>
 
                 <h3>X RPL 1</h3>
 
                 <p>
-                    Saat ini saya sedang menjalani kelas X RPL 1 dan terus
-                    belajar memahami dasar-dasar pemrograman, teknologi,
-                    serta bagaimana sebuah ide dapat dikembangkan menjadi
-                    sesuatu yang bisa digunakan.
+                    Saat ini saya berada di kelas X RPL 1. Ini merupakan
+                    awal dari perjalanan saya untuk memahami pemrograman,
+                    teknologi, dan bagaimana sebuah ide dapat diubah
+                    menjadi sesuatu yang nyata melalui dunia digital.
                 </p>
 
             </div>
@@ -1340,20 +1805,22 @@ footer strong{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      INTEREST
-========================= -->
+========================================================= -->
 
 <section id="interest">
 
     <div class="section-title reveal">
 
-        <div class="mini">04 — Things I Like</div>
+        <div class="mini">
+            04 — DISCOVERY
+        </div>
 
         <h2>Hal yang Saya Sukai</h2>
 
         <p>
-            Beberapa hal yang membuat saya tertarik, penasaran, dan ingin terus mencoba.
+            Beberapa hal yang membuat saya penasaran dan ingin terus mengeksplorasi.
         </p>
 
     </div>
@@ -1368,9 +1835,9 @@ footer strong{
             <h3>Teknologi</h3>
 
             <p>
-                Saya tertarik melihat bagaimana teknologi berkembang dan
-                bagaimana komputer dapat digunakan untuk membuat sesuatu
-                yang bermanfaat dan menarik.
+                Saya tertarik dengan perkembangan teknologi dan bagaimana
+                perangkat digital dapat digunakan untuk menyelesaikan
+                masalah sekaligus menciptakan sesuatu yang baru.
             </p>
 
         </div>
@@ -1383,9 +1850,9 @@ footer strong{
             <h3>Dunia Digital</h3>
 
             <p>
-                Berbagai hal yang berhubungan dengan dunia digital selalu
-                menarik perhatian saya, terutama sesuatu yang membuat saya
-                penasaran tentang bagaimana cara kerjanya.
+                Dunia digital selalu memberikan banyak hal untuk
+                dieksplorasi. Saya suka mencari tahu bagaimana sesuatu
+                bekerja dan apa yang sebenarnya terjadi di balik layar.
             </p>
 
         </div>
@@ -1395,12 +1862,12 @@ footer strong{
 
             <div class="emoji">🚀</div>
 
-            <h3>Mencoba Hal Baru</h3>
+            <h3>Hal Baru</h3>
 
             <p>
-                Saya senang mencoba sesuatu yang belum pernah dilakukan.
-                Dari pengalaman tersebut saya bisa mendapatkan pengetahuan
-                baru dan menemukan hal yang mungkin sebelumnya tidak terpikirkan.
+                Saya senang mencoba hal yang belum pernah saya lakukan.
+                Pengalaman baru dapat memberikan pengetahuan baru dan
+                membantu saya mengetahui apa yang sebenarnya saya sukai.
             </p>
 
         </div>
@@ -1410,15 +1877,17 @@ footer strong{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      GOAL
-========================= -->
+========================================================= -->
 
 <section id="goal">
 
     <div class="section-title reveal">
 
-        <div class="mini">05 — Future Mission</div>
+        <div class="mini">
+            05 — FUTURE MISSION
+        </div>
 
         <h2>Tujuan & Cita-cita</h2>
 
@@ -1428,36 +1897,41 @@ footer strong{
     <div class="glass goal reveal">
 
         <h3>
-            Membangun masa depan dari langkah-langkah kecil yang saya mulai hari ini.
+            Menjadikan masa sekolah sebagai tempat untuk mempersiapkan
+            perjalanan menuju masa depan.
         </h3>
 
         <p>
-            Saya ingin menggunakan masa sekolah sebagai kesempatan untuk
-            belajar sebanyak mungkin. Bukan hanya memahami materi di kelas,
-            tetapi juga mendapatkan pengalaman yang bisa membantu saya
-            berkembang menjadi pribadi yang lebih mandiri dan bertanggung jawab.
+            Saya ingin menggunakan masa sekolah bukan hanya untuk
+            mendapatkan pengetahuan, tetapi juga untuk mengumpulkan
+            pengalaman. Saya ingin mencoba berbagai hal, belajar dari
+            kesalahan, dan perlahan menemukan kemampuan yang ingin saya
+            kembangkan lebih jauh.
         </p>
 
         <p>
-            Di bidang teknologi, saya ingin terus mengembangkan kemampuan
-            pemrograman dan memahami lebih banyak tentang bagaimana sebuah
-            aplikasi atau sistem dapat dibuat dari awal. Saya juga ingin
-            memiliki keberanian untuk membuat karya berdasarkan ide saya sendiri.
+            Di bidang teknologi, saya ingin terus memahami pemrograman
+            dan berbagai hal yang berkaitan dengan dunia digital.
+            Saya berharap suatu saat nanti dapat membuat sesuatu
+            berdasarkan ide saya sendiri dan memiliki kemampuan untuk
+            mengembangkan ide tersebut menjadi karya yang nyata.
         </p>
 
         <p>
-            Selain perkembangan di bidang teknologi, saya juga memiliki
-            cita-cita yang ingin saya perjuangkan di masa depan.
-            Karena itu, saya ingin terus melatih kedisiplinan, tanggung jawab,
-            keberanian, dan kemampuan untuk bekerja keras.
+            Selain itu, saya juga memiliki cita-cita yang ingin saya
+            perjuangkan. Untuk mencapainya, saya ingin membangun
+            kedisiplinan, tanggung jawab, keberanian, dan kemauan
+            untuk terus berusaha meskipun prosesnya tidak selalu mudah.
         </p>
 
         <div class="goal-list">
+
             <span>🎯 Terus Belajar</span>
-            <span>💻 Berkembang di Teknologi</span>
-            <span>🚀 Menciptakan Sesuatu</span>
+            <span>💻 Berkembang</span>
+            <span>🚀 Menciptakan</span>
             <span>📚 Menambah Pengalaman</span>
-            <span>🔥 Tidak Mudah Menyerah</span>
+            <span>🔥 Pantang Menyerah</span>
+
         </div>
 
     </div>
@@ -1465,21 +1939,23 @@ footer strong{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      CONTACT
-========================= -->
+========================================================= -->
 
 <section id="contact">
 
     <div class="section-title reveal">
 
-        <div class="mini">06 — Find Me</div>
+        <div class="mini">
+            06 — COMMUNICATION
+        </div>
 
         <h2>Kontak & Social Media</h2>
 
         <p>
-            Kalau ingin mengenal saya lebih jauh atau sekadar berkunjung,
-            kamu bisa menemukan saya melalui media sosial berikut.
+            Sinyal komunikasi terbuka. Kamu bisa menemukan saya melalui
+            media sosial berikut.
         </p>
 
     </div>
@@ -1492,9 +1968,10 @@ footer strong{
             <h3>Let's Connect 🚀</h3>
 
             <p>
-                Dunia digital terasa lebih menarik ketika kita bisa saling
-                berbagi ide, pengalaman, dan hal-hal baru. Saya terbuka
-                untuk mengenal lebih banyak orang dan mendapatkan pengalaman baru.
+                Dunia digital menjadi lebih menarik ketika kita bisa
+                bertukar ide dan pengalaman. Kalau ingin melihat lebih
+                banyak aktivitas saya, kamu bisa mengunjungi media sosial
+                saya melalui tombol di bawah.
             </p>
 
             <div class="socials">
@@ -1507,13 +1984,6 @@ footer strong{
                     📸 Instagram
                 </a>
 
-                <a
-                    class="social"
-                    href="mailto:"
-                >
-                    ✉️ Email
-                </a>
-
             </div>
 
         </div>
@@ -1521,9 +1991,9 @@ footer strong{
 
         <div class="contact-orbit">
 
-            <div class="orbit"></div>
+            <div class="circle"></div>
 
-            <div class="orbit-center">
+            <div class="contact-center">
                 🛰️
             </div>
 
@@ -1534,9 +2004,9 @@ footer strong{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
@@ -1545,8 +2015,8 @@ footer strong{
         <strong>Sultan</strong>
     </p>
 
-    <p style="margin-top:10px;">
-        © 2026 — Personal Space Portfolio
+    <p style="margin-top:9px;">
+        © 2026 — Sultan's Space Mission
     </p>
 
 </footer>
@@ -1554,49 +2024,148 @@ footer strong{
 
 <script>
 
-/* =========================
-   SPLASH
-========================= */
+/* =========================================================
+   SPLASH LAUNCH
+========================================================= */
 
-function enterSpace(){
+function launchMission(){
 
     const splash = document.getElementById("splash");
+    const content = document.getElementById("splashContent");
+    const rocket = document.getElementById("rocket");
+    const speedLines = document.getElementById("speedLines");
+    const status = document.getElementById("launchStatus");
 
-    splash.classList.add("hide");
+    /* Ubah status */
+    status.textContent = "INITIALIZING MISSION...";
 
-    document.body.style.overflow = "auto";
+    splash.classList.add("launching");
+    content.classList.add("launching");
+
+    setTimeout(() => {
+        status.textContent = "ROCKET SYSTEM ONLINE";
+    },500);
+
+    setTimeout(() => {
+        status.textContent = "LAUNCH SEQUENCE STARTED";
+        rocket.classList.add("launch");
+        speedLines.classList.add("active");
+    },900);
+
+    setTimeout(() => {
+        status.textContent = "ENTERING SPACE...";
+    },1800);
+
+    setTimeout(() => {
+        status.textContent = "MISSION STARTED";
+    },2500);
+
+    setTimeout(() => {
+        splash.classList.add("hide");
+        document.body.style.overflow = "auto";
+    },3200);
 
 }
 
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* =========================================================
+   MOBILE NAV
+========================================================= */
 
 function toggleMenu(){
 
-    document.getElementById("navLinks")
-    .classList.toggle("active");
+    document
+        .getElementById("navLinks")
+        .classList.toggle("active");
 
 }
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
 
     link.addEventListener("click", () => {
 
-        document.getElementById("navLinks")
-        .classList.remove("active");
+        document
+            .getElementById("navLinks")
+            .classList.remove("active");
 
     });
 
 });
 
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+/* =========================================================
+   TYPING EFFECT
+========================================================= */
 
-const observer = new IntersectionObserver(
+const typingText = document.getElementById("typingText");
+
+const words = [
+    "RPL Student.",
+    "Digital Explorer.",
+    "Future Creator.",
+    "Always Learning."
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect(){
+
+    const current = words[wordIndex];
+
+    if(!deleting){
+
+        typingText.textContent =
+            current.substring(0,charIndex + 1);
+
+        charIndex++;
+
+        if(charIndex === current.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1500);
+
+            return;
+        }
+
+    }else{
+
+        typingText.textContent =
+            current.substring(0,charIndex - 1);
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            wordIndex =
+                (wordIndex + 1) % words.length;
+
+        }
+
+    }
+
+    setTimeout(
+        typeEffect,
+        deleting ? 45 : 90
+    );
+
+}
+
+typeEffect();
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+new IntersectionObserver(
     entries => {
 
         entries.forEach(entry => {
@@ -1615,31 +2184,43 @@ const observer = new IntersectionObserver(
     }
 );
 
-document.querySelectorAll(".reveal")
-.forEach(element => observer.observe(element));
+document
+.querySelectorAll(".reveal")
+.forEach(element => {
 
-
-/* =========================
-   PARALLAX SPACE
-========================= */
-
-window.addEventListener("mousemove", e => {
-
-    const x = (e.clientX / window.innerWidth - .5) * 20;
-    const y = (e.clientY / window.innerHeight - .5) * 20;
-
-    document.querySelector(".planet.one")
-    .style.transform = `translate(${x}px,${y}px)`;
-
-    document.querySelector(".planet.two")
-    .style.transform = `translate(${-x}px,${-y}px)`;
+    observer.observe(element);
 
 });
 
 
-/* =========================
-   INITIAL SCROLL LOCK
-========================= */
+/* =========================================================
+   PARALLAX PLANET
+========================================================= */
+
+window.addEventListener("mousemove", event => {
+
+    const x =
+        (event.clientX / window.innerWidth - .5) * 18;
+
+    const y =
+        (event.clientY / window.innerHeight - .5) * 18;
+
+    const planet =
+        document.querySelector(".planet-main");
+
+    if(planet){
+
+        planet.style.marginLeft = `${x}px`;
+        planet.style.marginTop = `${y}px`;
+
+    }
+
+});
+
+
+/* =========================================================
+   LOCK PAGE BEFORE LAUNCH
+========================================================= */
 
 document.body.style.overflow = "hidden";
 
